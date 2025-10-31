@@ -167,13 +167,6 @@ npx prisma studio
 - Neste MVP o login é simulado no `frontend/login.html` e `frontend/js/login.js` (sem JWT).
 - Futuro: implementar JWT no backend, rotas protegidas e persistência do usuário.
 
-## 🧩 Roadmap (futuras melhorias)
-- Autenticação JWT real e autorização por perfil.
-- Página de perfil do usuário logado.
-- Filtros/busca de agendamentos por data e cliente.
-- Envio de e-mail de confirmação de agendamento.
-- Migração de SQLite para MySQL/PostgreSQL.
-
 ## 🧷 Scripts úteis (package.json)
 ```json
 {
