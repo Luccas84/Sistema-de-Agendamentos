@@ -1,5 +1,11 @@
 # 🗓️ Sistema de Agendamentos (Local, Fullstack)
 
+# Meu Projeto
+
+Bem-vindo ao meu projeto!
+
+![Logo do Projeto](https://github.com/Luccas84/Landing-Page-Automotiva/blob/main/Projeto_7.jpg)
+
 Projeto completo e funcional de um Sistema de Agendamentos para uso 100% local, com backend em Node/Express, banco SQLite via Prisma ORM e frontend em HTML/CSS/JS (Vanilla). O design utiliza paleta preto/cinza/azul e ícones Boxicons.
 
 ## 📁 Estrutura do Projeto
