@@ -4,7 +4,7 @@
 
 Bem-vindo ao meu projeto!
 
-![Logo do Projeto](https://github.com/Luccas84/Landing-Page-Automotiva/blob/main/Projeto_7.jpg)
+![Logo do Projeto](https://github.com/Luccas84/Sistema-de-Agendamentos/blob/main/Projeto_17.png)
 
 Projeto completo e funcional de um Sistema de Agendamentos para uso 100% local, com backend em Node/Express, banco SQLite via Prisma ORM e frontend em HTML/CSS/JS (Vanilla). O design utiliza paleta preto/cinza/azul e ícones Boxicons.
 
