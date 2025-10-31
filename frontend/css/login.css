@@ -1,0 +1,141 @@
+/* login.css - Estilos específicos da página de login */
+
+body {
+  background: linear-gradient(135deg, var(--cor-preto) 0%, var(--cor-cinza-escuro) 100%);
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%233b82f6" fill-opacity="0.05"><circle cx="30" cy="30" r="4"/></g></svg>');
+  opacity: 0.5;
+}
+
+.login-container {
+  background: var(--cor-branco);
+  padding: 45px;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  max-width: 450px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-container h1 {
+  text-align: center;
+  margin-bottom: 35px;
+  color: var(--cor-preto);
+  font-size: 2.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.login-container h1 i {
+  color: var(--cor-azul);
+  font-size: 2rem;
+}
+
+.login-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 25px;
+  background: var(--cor-cinza-muito-claro);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  background-color: transparent;
+  color: var(--cor-cinza);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.tab-btn i {
+  font-size: 1.1rem;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--cor-azul) 0%, var(--cor-azul-escuro) 100%);
+  color: var(--cor-branco);
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+}
+
+.tab-btn:not(.active):hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--cor-azul);
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-form {
+  margin-top: 25px;
+}
+
+.login-form .form-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.login-form .form-group label i {
+  color: var(--cor-azul);
+  font-size: 1.1rem;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 15px;
+  padding: 14px;
+  font-size: 1.05rem;
+}
+
+#mensagem-login {
+  margin-top: 20px;
+}
+

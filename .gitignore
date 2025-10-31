@@ -1,0 +1,30 @@
+# Dependências
+node_modules/
+package-lock.json
+
+# Banco de dados SQLite
+backend/prisma/dev.db
+backend/prisma/dev.db-journal
+
+# Arquivos de ambiente
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build
+dist/
+build/
+
