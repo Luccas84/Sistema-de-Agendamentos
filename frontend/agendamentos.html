@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--
+  agendamentos.html - Gerenciamento de Agendamentos
+  - Formulário para criar/editar agendamentos (cliente, serviço, data/hora, status)
+  - Tabela para listar/editar/excluir agendamentos
+  - Se comunica com a API em /agendamentos
+  - Requer: css/main.css e js/agendamentos.js
+-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos - Sistema de Agendamentos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .status-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .status-pendente {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            color: #92400e;
+        }
+        .status-pendente i {
+            color: #f59e0b;
+        }
+        .status-confirmado {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            color: #065f46;
+        }
+        .status-confirmado i {
+            color: #10b981;
+        }
+        .status-cancelado {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            color: #991b1b;
+        }
+        .status-cancelado i {
+            color: #ef4444;
+        }
+        .status-concluido {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            color: #1e40af;
+        }
+        .status-concluido i {
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1><i class='bx bx-calendar-check icon-header'></i> Gerenciamento de Agendamentos</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <nav class="menu-lateral">
+            <a href="index.html"><i class='bx bx-home'></i> Dashboard</a>
+            <a href="clientes.html"><i class='bx bx-group'></i> Clientes</a>
+            <a href="servicos.html"><i class='bx bx-briefcase'></i> Serviços</a>
+            <a href="agendamentos.html"><i class='bx bx-calendar-check'></i> Agendamentos</a>
+        </nav>
+
+        <div id="mensagem" class="alert" style="display: none;"></div>
+
+        <!-- Formulário de Agendamento -->
+        <div class="card">
+            <h2 class="card-title"><i class='bx bx-calendar-plus'></i> Criar/Editar Agendamento</h2>
+            <form id="form-agendamento" onsubmit="salvarAgendamento(event)">
+                <div class="form-group">
+                    <label for="agendamento-cliente"><i class='bx bx-user'></i> Cliente *</label>
+                    <select id="agendamento-cliente" required>
+                        <option value="">Selecione um cliente</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="agendamento-servico"><i class='bx bx-briefcase'></i> Serviço *</label>
+                    <select id="agendamento-servico" required>
+                        <option value="">Selecione um serviço</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="agendamento-data"><i class='bx bx-calendar'></i> Data *</label>
+                    <input type="date" id="agendamento-data" required>
+                </div>
+                <div class="form-group">
+                    <label for="agendamento-hora"><i class='bx bx-time'></i> Hora *</label>
+                    <input type="time" id="agendamento-hora" required>
+                </div>
+                <div class="form-group">
+                    <label for="agendamento-status"><i class='bx bx-check-circle'></i> Status</label>
+                    <select id="agendamento-status">
+                        <option value="pendente">Pendente</option>
+                        <option value="confirmado">Confirmado</option>
+                        <option value="cancelado">Cancelado</option>
+                        <option value="concluido">Concluído</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" id="btn-salvar-agendamento"><i class='bx bx-save'></i> Criar Agendamento</button>
+                <button type="button" class="btn btn-secondary" id="btn-cancelar-agendamento" onclick="cancelarEdicao()" style="display: none;"><i class='bx bx-x'></i> Cancelar</button>
+            </form>
+        </div>
+
+        <!-- Lista de Agendamentos -->
+        <div class="card">
+            <h2 class="card-title"><i class='bx bx-list-ul'></i> Lista de Agendamentos</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><i class='bx bx-user'></i> Cliente</th>
+                        <th><i class='bx bx-briefcase'></i> Serviço</th>
+                        <th><i class='bx bx-calendar'></i> Data/Hora</th>
+                        <th><i class='bx bx-check-circle'></i> Status</th>
+                        <th><i class='bx bx-user-circle'></i> Usuário</th>
+                        <th><i class='bx bx-cog'></i> Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="agendamentos-tbody">
+                    <tr>
+                        <td colspan="6" style="text-align: center;">Carregando...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/agendamentos.js"></script>
+</body>
+</html>
+

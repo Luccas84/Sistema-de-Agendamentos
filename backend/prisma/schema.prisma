@@ -1,0 +1,52 @@
+// schema.prisma - Schema do banco de dados usando Prisma ORM
+// Define os modelos de dados e relacionamentos do sistema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// Modelo de Usuário - representa quem faz login no sistema
+model Usuario {
+  id           Int            @id @default(autoincrement())
+  nome         String
+  email        String         @unique
+  senha        String
+  agendamentos Agendamento[]  // Relacionamento: um usuário pode ter vários agendamentos
+}
+
+// Modelo de Cliente - representa os clientes que fazem agendamentos
+model Cliente {
+  id           Int            @id @default(autoincrement())
+  nome         String
+  telefone     String
+  email        String?
+  agendamentos Agendamento[]  // Relacionamento: um cliente pode ter vários agendamentos
+}
+
+// Modelo de Serviço - representa os serviços oferecidos
+model Servico {
+  id           Int            @id @default(autoincrement())
+  nome         String
+  preco        Float
+  duracao      Int            // Duração em minutos
+  agendamentos Agendamento[]  // Relacionamento: um serviço pode estar em vários agendamentos
+}
+
+// Modelo de Agendamento - representa os agendamentos realizados
+model Agendamento {
+  id          Int       @id @default(autoincrement())
+  data        DateTime
+  status      String    @default("pendente") // Status: pendente, confirmado, cancelado, concluído
+  clienteId   Int
+  servicoId   Int
+  usuarioId   Int
+  cliente     Cliente   @relation(fields: [clienteId], references: [id])
+  servico     Servico   @relation(fields: [servicoId], references: [id])
+  usuario     Usuario   @relation(fields: [usuarioId], references: [id])
+}
+

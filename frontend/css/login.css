@@ -1,0 +1,306 @@
+/* login.css - Estilos específicos da página de login */
+
+body {
+  background: linear-gradient(
+    135deg,
+    var(--cor-preto) 0%,
+    var(--cor-cinza-escuro) 100%
+  );
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%233b82f6" fill-opacity="0.05"><circle cx="30" cy="30" r="4"/></g></svg>');
+  opacity: 0.5;
+}
+
+.login-container {
+  background: var(--cor-branco);
+  padding: 45px;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  max-width: 450px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-container h1 {
+  text-align: center;
+  margin-bottom: 35px;
+  color: var(--cor-preto);
+  font-size: 2.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.login-container h1 i {
+  color: var(--cor-azul);
+  font-size: 2rem;
+}
+
+.login-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 25px;
+  background: var(--cor-cinza-muito-claro);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  background-color: transparent;
+  color: var(--cor-cinza);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.tab-btn i {
+  font-size: 1.1rem;
+}
+
+.tab-btn.active {
+  background: linear-gradient(
+    135deg,
+    var(--cor-azul) 0%,
+    var(--cor-azul-escuro) 100%
+  );
+  color: var(--cor-branco);
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+}
+
+.tab-btn:not(.active):hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--cor-azul);
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-form {
+  margin-top: 25px;
+}
+
+.login-form .form-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.login-form .form-group label i {
+  color: var(--cor-azul);
+  font-size: 1.1rem;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 15px;
+  padding: 14px;
+  font-size: 1.05rem;
+}
+
+#mensagem-login {
+  margin-top: 20px;
+}
+
+/* ==========================================
+   🌐 login.css — Responsividade Total
+   ========================================== */
+
+/* Ajustes fluídos com clamp() */
+.login-container {
+  padding: clamp(25px, 3vw, 50px);
+  max-width: clamp(300px, 80vw, 450px);
+}
+
+.login-container h1 {
+  font-size: clamp(1.6rem, 1.5vw + 1rem, 2.4rem);
+  gap: clamp(8px, 1vw, 15px);
+  margin-bottom: clamp(20px, 3vw, 40px);
+}
+
+.login-container h1 i {
+  font-size: clamp(1.4rem, 1vw + 0.8rem, 2.2rem);
+}
+
+.tab-btn {
+  padding: clamp(10px, 1.2vw, 16px) clamp(14px, 2vw, 22px);
+  font-size: clamp(0.85rem, 0.8vw + 0.4rem, 1rem);
+  gap: clamp(5px, 1vw, 10px);
+}
+
+.tab-btn i {
+  font-size: clamp(1rem, 0.8vw + 0.5rem, 1.2rem);
+}
+
+.btn-block {
+  padding: clamp(10px, 1.2vw, 16px);
+  font-size: clamp(0.95rem, 0.8vw + 0.5rem, 1.1rem);
+}
+
+/* ==========================================
+   📏 BREAKPOINTS ADAPTATIVOS
+   ========================================== */
+
+/* 🖥️ Larguras acima de 1440px (monitores grandes) */
+@media (min-width: 1440px) {
+  body {
+    padding: 60px;
+  }
+
+  .login-container {
+    max-width: 500px;
+  }
+}
+
+/* 💻 Até 1024px (tablets e notebooks menores) */
+@media (max-width: 1024px) {
+  body {
+    padding: 40px 20px;
+  }
+
+  .login-container {
+    padding: 40px;
+  }
+
+  .login-tabs {
+    gap: 6px;
+  }
+
+  .tab-btn {
+    font-size: 0.9rem;
+  }
+}
+
+/* 📲 Até 768px (tablets verticais e celulares grandes) */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    padding: 30px 15px;
+  }
+
+  .login-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 35px;
+  }
+
+  .login-container h1 {
+    font-size: 2rem;
+  }
+
+  .tab-btn {
+    font-size: 0.9rem;
+    padding: 12px 18px;
+  }
+
+  .btn-block {
+    font-size: 1rem;
+  }
+}
+
+/* 📱 Até 600px (celulares médios) */
+@media (max-width: 600px) {
+  body {
+    padding: 25px 10px;
+  }
+
+  .login-container {
+    padding: 25px 20px;
+    border-radius: var(--radius-sm);
+  }
+
+  .login-container h1 {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .login-tabs {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tab-btn {
+    width: 100%;
+  }
+
+  .btn-block {
+    padding: 12px;
+  }
+}
+
+/* 📞 Até 400px (celulares pequenos e antigos) */
+@media (max-width: 400px) {
+  .login-container {
+    padding: 20px;
+    max-width: 95%;
+  }
+
+  .login-container h1 {
+    font-size: 1.6rem;
+  }
+
+  .tab-btn {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+  }
+
+  .btn-block {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .login-form label {
+    font-size: 0.9rem;
+  }
+
+  .login-form .form-group label i {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,319 @@
+/* dashboard.css - Estilos específicos do dashboard */
+
+.dashboard-header {
+  background: linear-gradient(
+    135deg,
+    var(--cor-preto) 0%,
+    var(--cor-cinza-escuro) 100%
+  );
+  color: var(--cor-branco);
+  padding: 40px 0;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(37, 99, 235, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+.dashboard-header .container {
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-header h1 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.dashboard-header h1 i {
+  font-size: 2.5rem;
+  color: var(--cor-azul-claro);
+}
+
+.dashboard-header p {
+  text-align: center;
+  font-size: 1.1rem;
+  opacity: 0.95;
+  margin-bottom: 25px;
+}
+
+.dashboard-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.dashboard-nav a {
+  padding: 14px 28px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: var(--cor-branco);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.dashboard-nav a i {
+  font-size: 1.2rem;
+}
+
+.dashboard-nav a:hover {
+  background: var(--cor-azul);
+  border-color: var(--cor-azul-claro);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.4);
+}
+
+.dashboard-nav a:last-child:hover {
+  background: rgba(239, 68, 68, 0.9);
+  border-color: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.4);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: var(--cor-branco);
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--sombra-card);
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--cor-azul) 0%,
+    var(--cor-azul-escuro) 100%
+  );
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--sombra-hover);
+  border-color: var(--cor-azul-claro);
+}
+
+.stat-card .stat-icon {
+  font-size: 3rem;
+  color: var(--cor-azul);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.stat-card h3 {
+  font-size: 2.5rem;
+  color: var(--cor-preto);
+  margin-bottom: 10px;
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    var(--cor-azul) 0%,
+    var(--cor-azul-escuro) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-card p {
+  color: var(--cor-cinza);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===============================
+   🌐 RESPONSIVIDADE FLUIDA GERAL
+   =============================== */
+
+/* Fontes e espaçamentos com clamp() para adaptação automática */
+.dashboard-header h1 {
+  font-size: clamp(1.8rem, 2vw + 1rem, 3rem);
+  gap: clamp(8px, 1.5vw, 20px);
+}
+
+.dashboard-header h1 i {
+  font-size: clamp(1.6rem, 1.5vw + 0.5rem, 2.8rem);
+}
+
+.dashboard-header p {
+  font-size: clamp(0.9rem, 0.8vw + 0.5rem, 1.2rem);
+  margin-bottom: clamp(15px, 2vw, 30px);
+}
+
+.dashboard-nav a {
+  padding: clamp(10px, 1vw + 6px, 16px) clamp(16px, 2vw, 32px);
+  font-size: clamp(0.8rem, 0.7vw + 0.5rem, 1rem);
+  gap: clamp(6px, 0.8vw, 12px);
+}
+
+.stat-card {
+  padding: clamp(18px, 2vw, 30px);
+}
+
+.stat-card .stat-icon {
+  font-size: clamp(2rem, 2vw + 0.5rem, 3.5rem);
+}
+
+.stat-card h3 {
+  font-size: clamp(1.5rem, 1.5vw + 1rem, 2.8rem);
+}
+
+.stat-card p {
+  font-size: clamp(0.8rem, 0.6vw + 0.5rem, 1rem);
+}
+
+/* ===============================
+   📱 BREAKPOINTS ADAPTATIVOS
+   =============================== */
+
+/* 🖥️ Larguras acima de 1440px (monitores grandes) */
+@media (min-width: 1440px) {
+  .dashboard-header {
+    padding: 60px 0;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px;
+  }
+}
+
+/* 💻 Até 1024px (tablets e notebooks menores) */
+@media (max-width: 1024px) {
+  .dashboard-header {
+    padding: 40px 0;
+  }
+
+  .dashboard-nav {
+    gap: 20px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+}
+
+/* 📲 Até 768px (tablets verticais e celulares grandes) */
+@media (max-width: 768px) {
+  .dashboard-header h1 {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .dashboard-header p {
+    margin: 0 20px 20px;
+  }
+
+  .dashboard-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .dashboard-nav a {
+    width: 80%;
+    justify-content: center;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* 📱 Até 600px (celulares médios) */
+@media (max-width: 600px) {
+  .dashboard-header {
+    padding: 30px 0;
+  }
+
+  .dashboard-header h1 {
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+  }
+
+  .dashboard-nav a {
+    width: 90%;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* 📞 Até 400px (celulares pequenos e antigos) */
+@media (max-width: 400px) {
+  .dashboard-header {
+    padding: 25px 0;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.5rem;
+    gap: 8px;
+  }
+
+  .dashboard-nav a {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .stat-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .stat-card .stat-icon {
+    font-size: 2rem;
+  }
+}

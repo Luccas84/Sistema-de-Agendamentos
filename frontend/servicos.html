@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+  servicos.html - Gerenciamento de Serviços
+  - Formulário para criar/editar serviços (nome, preço, duração)
+  - Tabela para listar/editar/excluir serviços
+  - Se comunica com a API em /servicos
+  - Requer: css/main.css e js/servicos.js
+-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - Sistema de Agendamentos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1><i class='bx bx-briefcase icon-header'></i> Gerenciamento de Serviços</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <nav class="menu-lateral">
+            <a href="index.html"><i class='bx bx-home'></i> Dashboard</a>
+            <a href="clientes.html"><i class='bx bx-group'></i> Clientes</a>
+            <a href="servicos.html"><i class='bx bx-briefcase'></i> Serviços</a>
+            <a href="agendamentos.html"><i class='bx bx-calendar-check'></i> Agendamentos</a>
+        </nav>
+
+        <div id="mensagem" class="alert" style="display: none;"></div>
+
+        <!-- Formulário de Serviço -->
+        <div class="card">
+            <h2 class="card-title"><i class='bx bx-plus-circle'></i> Cadastrar/Editar Serviço</h2>
+            <form id="form-servico" onsubmit="salvarServico(event)">
+                <div class="form-group">
+                    <label for="servico-nome"><i class='bx bx-rename'></i> Nome do Serviço *</label>
+                    <input type="text" id="servico-nome" required placeholder="Ex: Corte de Cabelo">
+                </div>
+                <div class="form-group">
+                    <label for="servico-preco"><i class='bx bx-dollar'></i> Preço (R$) *</label>
+                    <input type="number" id="servico-preco" required step="0.01" min="0" placeholder="0.00">
+                </div>
+                <div class="form-group">
+                    <label for="servico-duracao"><i class='bx bx-time'></i> Duração (minutos) *</label>
+                    <input type="number" id="servico-duracao" required min="1" placeholder="30">
+                </div>
+                <button type="submit" class="btn btn-primary" id="btn-salvar-servico"><i class='bx bx-save'></i> Cadastrar Serviço</button>
+                <button type="button" class="btn btn-secondary" id="btn-cancelar-servico" onclick="cancelarEdicao()" style="display: none;"><i class='bx bx-x'></i> Cancelar</button>
+            </form>
+        </div>
+
+        <!-- Lista de Serviços -->
+        <div class="card">
+            <h2 class="card-title"><i class='bx bx-list-ul'></i> Lista de Serviços</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><i class='bx bx-rename'></i> Nome</th>
+                        <th><i class='bx bx-dollar'></i> Preço</th>
+                        <th><i class='bx bx-time'></i> Duração</th>
+                        <th><i class='bx bx-cog'></i> Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="servicos-tbody">
+                    <tr>
+                        <td colspan="4" style="text-align: center;">Carregando...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/servicos.js"></script>
+</body>
+</html>
+
